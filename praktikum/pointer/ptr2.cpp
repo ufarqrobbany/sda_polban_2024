@@ -8,10 +8,10 @@
 int main() {
     float *pu;                // Deklarasi pointer pu bertipe float
     float nu;                 // Deklarasi variabel nu bertipe float
-    int u = 1234;             // Deklarasi dan inisialisasi variabel u bertipe int
+    float u = 1234;           // Deklarasi dan inisialisasi variabel u bertipe int
     pu = &u;                  // Mengatur pointer pu untuk menunjuk ke alamat memori variabel u
     nu = *pu;                 // Mencoba mengambil nilai yang ditunjuk oleh pointer pu dan menyimpannya dalam variabel nu
-    printf("u = %d\n", u);    // Mencetak nilai variabel u
+    printf("u = %f\n", u);    // Mencetak nilai variabel u
     printf("nu = %f\n", nu);  // Mencetak nilai variabel nu dengan format specifier %f yang salah
     return 0;
 }
