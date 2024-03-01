@@ -7,7 +7,7 @@
 #include <string.h>
 #define PANJANG 20
 int main() {
-    /* Kamus Data (deklarasi, inisialisasi nilai variabel)*/
+    /* Kamus Data (deklarasi, inisialisasi nilai variabel) */
     char nama1[PANJANG] = "DEWI SARTIKA";
     char nama2[PANJANG] = "SULTAN HASANUDDIN";
     char namaX[PANJANG];
