@@ -1,0 +1,2 @@
+deleteFromBeginning(&linkedlist);
+    displayList(&linkedlist);
