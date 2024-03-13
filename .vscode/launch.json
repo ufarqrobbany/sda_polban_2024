@@ -7,9 +7,9 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "externalConsole": false,
-      "cwd": "/home/ufaruq/Documents/GitHub/sda_polban_2024",
-      "program": "/home/ufaruq/Documents/GitHub/sda_polban_2024/build/Debug/outDebug",
+      "externalConsole": true,
+      "cwd": "c:/Users/Administrator/Documents/GitHub/sda_polban_2024/praktikum/praktikum3",
+      "program": "c:/Users/Administrator/Documents/GitHub/sda_polban_2024/praktikum/praktikum3/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
