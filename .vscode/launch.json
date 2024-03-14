@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Administrator/Documents/GitHub/sda_polban_2024/praktikum/praktikum3",
-      "program": "c:/Users/Administrator/Documents/GitHub/sda_polban_2024/praktikum/praktikum3/build/Debug/outDebug",
+      "cwd": "c:/Users/Administrator/Documents/GitHub/sda_polban_2024/praktikum/praktikum5",
+      "program": "c:/Users/Administrator/Documents/GitHub/sda_polban_2024/praktikum/praktikum5/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
