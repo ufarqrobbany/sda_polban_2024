@@ -15,19 +15,25 @@ int main() {
         float y;
         float x;
     } Point;                                    /* nama type */
-    Point *P2;                                  /* deklarasi pointer ke struct */
     Point *P3 = (Point *)malloc(sizeof(Point)); /* deklarasi alokasi */
 
-    printf("alamat : %p\n", &P2);
-    printf("nilai : %d\n", P2->x);
+    Point *P2;
+    printf("Alamat P2: %p\n", &P2);
+    // Nilai pointer P2
+    printf("Nilai P2: %p\n", P2);
+    // Assign NULL
+    P2 = NULL;
+    printf("Nilai P2: %p\n", P2);
+    // Assign memori yang dialokasi
+    P2 = (Point *)malloc(sizeof(Point));
+    printf("Nilai P2: %p\n", P2);
 
     /* program */
 
     /* Cara 1 : mengacu elemen pointer ke struct */
     printf("\nCara 1\n");
     printf("Titik P2, dengan P2->x dan P2->y : \n");
-    P2 = (Point *)malloc(sizeof(Point)); /* Alokasi */
-    P2->x = 9.12;                        /* Isi nilai komponen */
+    P2->x = 9.12; /* Isi nilai komponen */
     P2->y = 2.567;
     printf("P2.x = %f \nP2.y = %f \n", P2->x, P2->y);
 
