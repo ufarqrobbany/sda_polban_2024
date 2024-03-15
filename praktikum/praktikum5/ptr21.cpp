@@ -33,8 +33,10 @@ void insertAkhir(address *firstNode, infotype info);
 void tampilInfoNode(address node);
 
 void deleteAwal(address *firstNode);
-void deleteAkhir(address firstNode);
-void deleteDiAntara(address firstNode, infotype previnfo);
+void deleteAkhir(address *firstNode);
+void deleteDiAntara(address *firstNode, infotype previnfo);
+
+void updateAwal(address *firstNode, infotype newInfo);
 
 /* Program Utama */
 int main() {
@@ -92,12 +94,21 @@ int main() {
     /* Menghapus node di antara 2 node (berdasarkan nilai info) */
     /* Hapus node dengan nilai info == 20 */
     printf("\n\nHapus node di tengah");
-    deleteDiAntara(First, 20);
+    deleteDiAntara(&First, 30);
     tampilInfoNode(First);
 
     /* Menghapus node terakhir di linked list */
     printf("\n\nHapus node di akhir");
-    deleteAkhir(First);
+    deleteAkhir(&First);
+    tampilInfoNode(First);
+
+    deleteAwal(&First);
+    deleteAwal(&First);
+    deleteAwal(&First);
+
+    /* Update nilai info pada node di awal linked list */
+    printf("\n\nUpdate node awal");
+    updateAwal(&First, 10);
     tampilInfoNode(First);
 
     /* Tampilkan subvar info semua node */
@@ -213,12 +224,16 @@ void deleteAwal(address *firstNode) {
     }
 }
 
-void deleteAkhir(address firstNode) {
-    address current = firstNode;
+void deleteAkhir(address *firstNode) {
+    address current = *firstNode;
 
-    if (firstNode == Nil) {
+    if (*firstNode == Nil) {
         // jika linked list kosong
         printf("Gagal menghapus node! linked list kosong");
+    } else if (next(current) == Nil) {
+        // jika node hanya ada 1
+        free(current);
+        *firstNode = Nil;
     } else {
         while (next(next(current)) != Nil) {
             current = next(current);
@@ -229,17 +244,16 @@ void deleteAkhir(address firstNode) {
     }
 }
 
-void deleteDiAntara(address firstNode, infotype previnfo) {
-    address current = firstNode;
+void deleteDiAntara(address *firstNode, infotype previnfo) {
+    address current = *firstNode;
 
-    if (firstNode == Nil) {
+    if (*firstNode == Nil) {
         // jika linked list kosong
         printf("Gagal menghapus node! linked list kosong");
     } else if (info(current) == previnfo) {
         // jika posisi node yang dicari ada di awal linked list
-        next(current) = next(next(current));
-
-        free(next(current));
+        *firstNode = next(current);
+        free(current);
     } else {
         // cari posisi node sebelum node dengan nilai info == previnfo
         while ((next(current) != Nil) && (info(next(current)) != previnfo)) {
@@ -254,5 +268,15 @@ void deleteDiAntara(address firstNode, infotype previnfo) {
             // jika node tidak ditemukan
             printf("Gagal menghapus node! Node dengan nilai info = %d, tidak ditemukan.", previnfo);
         }
+    }
+}
+
+/* Update */
+void updateAwal(address *firstNode, infotype newInfo) {
+    if (*firstNode == Nil) {
+        // jika linked list kosong, tambah node
+        insertAwal(&(*firstNode), newInfo);
+    } else {
+        info(*firstNode) = newInfo;
     }
 }
