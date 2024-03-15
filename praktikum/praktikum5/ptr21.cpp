@@ -28,9 +28,13 @@ typedef struct tElmtlist {
 
 /* Deklarasi modul */
 void insertAwal(address *firstNode, infotype info);
-void insertDiAntara(address *firstNode, infotype in, infotype info);
+void insertDiAntara(address *firstNode, infotype previnfo, infotype info);
 void insertAkhir(address *firstNode, infotype info);
 void tampilInfoNode(address node);
+
+void deleteAwal(address *firstNode);
+void deleteAkhir(address firstNode);
+void deleteDiAntara(address firstNode, infotype previnfo);
 
 /* Program Utama */
 int main() {
@@ -61,23 +65,48 @@ int main() {
     next(P) = Nil;
     next(P) = First;
     First = P;
+    printf("\n\nInitial State");
+    tampilInfoNode(First);
 
     /* Menambahkan node baru di awal linked list */
+    printf("\n\nInsert node di awal");
     insertAwal(&First, 110);
+    tampilInfoNode(First);
 
     /* Menambahkan node baru di antara 2 node (berdasarkan nilai info) */
     /* Setelah node dengan nilai info = 20 */
+    printf("\n\nInsert node di antara");
     insertDiAntara(&First, 20, 220);
+    tampilInfoNode(First);
 
     /* Menambahkan node baru di akhir linked list */
+    printf("\n\nInsert node di akhir");
     insertAkhir(&First, 330);
+    tampilInfoNode(First);
+
+    /* Menghapus node awal di linked list */
+    printf("\n\nHapus node di awal");
+    deleteAwal(&First);
+    tampilInfoNode(First);
+
+    /* Menghapus node di antara 2 node (berdasarkan nilai info) */
+    /* Hapus node dengan nilai info == 20 */
+    printf("\n\nHapus node di tengah");
+    deleteDiAntara(First, 20);
+    tampilInfoNode(First);
+
+    /* Menghapus node terakhir di linked list */
+    printf("\n\nHapus node di akhir");
+    deleteAkhir(First);
+    tampilInfoNode(First);
 
     /* Tampilkan subvar info semua node */
-    tampilInfoNode(First);
+    // tampilInfoNode(First);
 
     return 0;
 }
 
+/* Display */
 void tampilInfoNode(address node) {
     address current = node;
 
@@ -93,10 +122,9 @@ void tampilInfoNode(address node) {
         }
         printf("Nil");
     }
-
-    delete &current;
 }
 
+/* Insertion */
 void insertAwal(address *firstNode, infotype info) {
     // alokasi dan assign nilai node baru
     address nodeBaru = (address)malloc(sizeof(ElmtList));
@@ -114,8 +142,6 @@ void insertAwal(address *firstNode, infotype info) {
         next(nodeBaru) = *firstNode;
         *firstNode = nodeBaru;
     }
-
-    delete &nodeBaru;
 }
 
 void insertAkhir(address *firstNode, infotype info) {
@@ -139,9 +165,6 @@ void insertAkhir(address *firstNode, infotype info) {
         }
         next(current) = nodeBaru;
     }
-
-    delete &current;
-    delete &nodeBaru;
 }
 
 void insertDiAntara(address *firstNode, infotype previnfo, infotype info) {
@@ -175,7 +198,61 @@ void insertDiAntara(address *firstNode, infotype previnfo, infotype info) {
             printf("Gagal menyisipkan node baru! Node dengan nilai info = %d, tidak ditemukan.", previnfo);
         }
     }
+}
 
-    delete &current;
-    delete &nodeBaru;
+/* Deletion */
+void deleteAwal(address *firstNode) {
+    address deleteNode = *firstNode;
+
+    if ((*firstNode) == Nil) {
+        // jika linked list kosong
+        printf("Gagal menghapus node! linked list kosong");
+    } else {
+        *firstNode = next(*firstNode);
+        free(deleteNode);
+    }
+}
+
+void deleteAkhir(address firstNode) {
+    address current = firstNode;
+
+    if (firstNode == Nil) {
+        // jika linked list kosong
+        printf("Gagal menghapus node! linked list kosong");
+    } else {
+        while (next(next(current)) != Nil) {
+            current = next(current);
+        }
+
+        free(next(next(current)));
+        next(current) = Nil;
+    }
+}
+
+void deleteDiAntara(address firstNode, infotype previnfo) {
+    address current = firstNode;
+
+    if (firstNode == Nil) {
+        // jika linked list kosong
+        printf("Gagal menghapus node! linked list kosong");
+    } else if (info(current) == previnfo) {
+        // jika posisi node yang dicari ada di awal linked list
+        next(current) = next(next(current));
+
+        free(next(current));
+    } else {
+        // cari posisi node sebelum node dengan nilai info == previnfo
+        while ((next(current) != Nil) && (info(next(current)) != previnfo)) {
+            current = next(current);
+        }
+
+        if ((next(current) != Nil) && (info(next(current)) == previnfo)) {
+            // jika node ditemukan
+            next(current) = next(next(current));
+            free(next(current));
+        } else {
+            // jika node tidak ditemukan
+            printf("Gagal menghapus node! Node dengan nilai info = %d, tidak ditemukan.", previnfo);
+        }
+    }
 }
