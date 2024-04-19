@@ -180,6 +180,7 @@ void deleteWarga(addressK listKota, infotype kota, infotype nama) {
 
 void displayWargaKota(addressK listKota) {
     addressK currentK = listKota;
+
     // tampilkan setiap kota yang ada
     int jmlKota = 0;
     while (currentK != NULL) {
@@ -199,6 +200,7 @@ void displayWargaKota(addressK listKota) {
         currentK = currentK->next;
         jmlKota += 1;
     }
+
     // jika tidak ada kota
     if (jmlKota == 0) {
         printf("\nTidak ada kota\n");

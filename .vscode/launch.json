@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": ".",
-      "program": "build/Debug/outDebug",
+      "cwd": "c:/Users/Administrator/Documents/GitHub/sda_polban_2024/praktikum/praktikum5/latihan_struktur_linear",
+      "program": "c:/Users/Administrator/Documents/GitHub/sda_polban_2024/praktikum/praktikum5/latihan_struktur_linear/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
