@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Administrator/Documents/GitHub/sda_polban_2024/praktikum/praktikum9",
-      "program": "c:/Users/Administrator/Documents/GitHub/sda_polban_2024/praktikum/praktikum9/build/Debug/outDebug",
+      "cwd": "e:/Politeknik Negeri Bandung/Struktur Data & Algoritma/NonBinaryTree1A/Statis",
+      "program": "e:/Politeknik Negeri Bandung/Struktur Data & Algoritma/NonBinaryTree1A/Statis/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
